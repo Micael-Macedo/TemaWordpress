@@ -18,3 +18,17 @@ function my_theme_scripts(){
     wp_enqueue_script('my-theme-bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('popper'), '1.0', true);
 
 }
+add_action('widgets_init', 'my_theme_sidebars');
+function my_theme_sidebars(){
+    register_sidebar(
+        array(
+            'id' => 'primary-sidebar',
+            'name' => 'Primary Sidebar',
+            'description' => 'Sidebar that appears across the entire website',
+            'before_widget' => '<div id="%1$s" class="widget %2$s"> ',
+            'after_widget' => '</div>',
+            'before_title' => '<h3> ',
+            'after_title' => '</h3>',
+        )
+    );
+}
